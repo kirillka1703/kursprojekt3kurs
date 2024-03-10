@@ -1,0 +1,58 @@
+<aside class="left_side" [ngClass]="{ 'open': isSidebarOpen }" [ngStyle]="{ 'width.px': isSidebarOpen ? 300 : 70 }">
+  <div class="btn_mnu" (click)="toggleSidebar()" [ngStyle]="{ 'width.px': isSidebarOpen ? 300 : null, 'height.px': isSidebarOpen ? 70 : null }">
+    <div class="btn_row">≡</div>
+  </div>
+  <nav>
+    <a routerLink="/new-calendar">
+      <span *ngIf="isSidebarOpen">Календарка</span>
+      <span *ngIf="!isSidebarOpen">📅</span>
+    </a>
+    <a routerLink="/people">
+      <span *ngIf="isSidebarOpen">Ответственный человек</span>
+      <span *ngIf="!isSidebarOpen">👤</span>
+    </a>
+    <a routerLink="/discipline">
+      <span *ngIf="isSidebarOpen">Спортивная дисциплина</span>
+      <span *ngIf="!isSidebarOpen">⚽</span>
+    </a>
+    <a routerLink="/statistic">
+      <span *ngIf="isSidebarOpen">Статистика по людям</span>
+      <span *ngIf="!isSidebarOpen">📊</span>
+    </a>
+  </nav>
+</aside>
+
+<div class="content">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <!-- peopleName Column -->
+    <ng-container matColumnDef="peopleName">
+      <th mat-header-cell *matHeaderCellDef>peopleName</th>
+      <td mat-cell *matCellDef="let element">{{ element.peopleName }}</td>
+    </ng-container>
+
+    <!-- quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>quantity</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+    </ng-container>
+
+    <!-- mainevent Column -->
+    <ng-container matColumnDef="mainevent">
+      <th mat-header-cell *matHeaderCellDef>mainevent</th>
+      <td mat-cell *matCellDef="let element">{{ element.mainevent }}</td>
+    </ng-container>
+
+    <!-- allevent Column -->
+    <ng-container matColumnDef="allevent">
+      <th mat-header-cell *matHeaderCellDef>allevent</th>
+      <td mat-cell *matCellDef="let element">{{ element.allevent }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      (click)="clickedRows.add(element)"
+      [class.demo-row-is-clicked]="clickedRows.has(element)"
+      *matRowDef="let element; columns: displayedColumns"
+    ></tr>
+  </table>
+</div>

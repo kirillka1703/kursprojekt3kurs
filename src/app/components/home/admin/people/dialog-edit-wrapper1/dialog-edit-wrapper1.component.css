@@ -1,0 +1,10 @@
+
+
+.example-header-image {
+  width: 60px;
+  height: 60px;
+  background-image: url('C:/Users/KIRDEV/старый прект/kursovoi/kurs_Frontend/src/assets/photos/игнат.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}

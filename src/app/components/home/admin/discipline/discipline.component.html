@@ -1,0 +1,49 @@
+<aside class="left_side" [ngClass]="{ 'open': isSidebarOpen }" [ngStyle]="{ 'width.px': isSidebarOpen ? 300 : 70 }">
+  <div class="btn_mnu" (click)="toggleSidebar()">
+    <div class="btn_row">≡</div>
+  </div>
+  <nav>
+    <a routerLink="/new-calendar">
+      <span *ngIf="isSidebarOpen">Календарка</span>
+      <span *ngIf="!isSidebarOpen">📅</span>
+    </a>
+    <a routerLink="/people">
+      <span *ngIf="isSidebarOpen">Ответственный человек</span>
+      <span *ngIf="!isSidebarOpen">👤</span>
+    </a>
+    <a routerLink="/discipline">
+      <span *ngIf="isSidebarOpen">Спортивная дисциплина</span>
+      <span *ngIf="!isSidebarOpen">⚽</span>
+    </a>
+    <a routerLink="/statistic">
+      <span *ngIf="isSidebarOpen">Статистика по людям</span>
+      <span *ngIf="!isSidebarOpen">📊</span>
+    </a>
+  </nav>
+</aside>
+<div class="content">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>name</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+
+    <!-- category Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>category</th>
+      <td mat-cell *matCellDef="let element">{{element.category}}</td>
+    </ng-container>
+
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>description</th>
+      <td mat-cell *matCellDef="let element">{{element.description}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+

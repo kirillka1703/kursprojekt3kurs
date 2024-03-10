@@ -1,0 +1,160 @@
+<aside class="left_side" [ngClass]="{ 'open': isSidebarOpen }" [ngStyle]="{ 'width.px': isSidebarOpen ? 300 : 70 }">
+  <div class="btn_mnu" (click)="toggleSidebar()" [ngStyle]="{ 'width.px': isSidebarOpen ? 300 : null, 'height.px': isSidebarOpen ? 70 : null }">
+    <div class="btn_row">≡</div>
+  </div>
+  <nav>
+    <a routerLink="/new-calendar">
+      <span *ngIf="isSidebarOpen">Календарка</span>
+      <span *ngIf="!isSidebarOpen">📅</span>
+    </a>
+    <a routerLink="/people">
+      <span *ngIf="isSidebarOpen">Ответственный человек</span>
+      <span *ngIf="!isSidebarOpen">👤</span>
+    </a>
+    <a routerLink="/discipline">
+      <span *ngIf="isSidebarOpen">Спортивная дисциплина</span>
+      <span *ngIf="!isSidebarOpen">⚽</span>
+    </a>
+    <a routerLink="/statistic">
+      <span *ngIf="isSidebarOpen">Статистика по людям</span>
+      <span *ngIf="!isSidebarOpen">📊</span>
+    </a>
+  </nav>
+</aside>
+
+<div class="content">
+  <div class="calendar-wrapper">
+    <h1 class="calendar-title">Календарь</h1>
+    <div class="calendar-header">
+      <h3>Январь 2024</h3>
+    </div>
+    <table class="small-table">
+      <thead>
+        <tr>
+          <th>Пн</th>
+          <th>Вт</th>
+          <th>Ср</th>
+          <th>Чт</th>
+          <th>Пт</th>
+          <th>Сб</th>
+          <th>Вс</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td (click)="showEventDialog(1)" [ngClass]="{'active': isCellActive[1]}">1</td>
+          <td (click)="showEventDialog(2)" [ngClass]="{'active': isCellActive[2]}">2</td>
+          <td (click)="showEventDialog(3)" [ngClass]="{'active': isCellActive[3]}">3</td>
+          <td (click)="showEventDialog(4)" [ngClass]="{'active': isCellActive[4]}">4</td>
+          <td (click)="showEventDialog(5)" [ngClass]="{'active': isCellActive[5]}">5</td>
+          <td (click)="showEventDialog(6)" [ngClass]="{'active': isCellActive[6]}">6</td>
+          <td (click)="showEventDialog(7)" [ngClass]="{'active': isCellActive[7]}">7</td>
+        </tr>
+        <tr>
+          <td (click)="showEventDialog(8)" [ngClass]="{'active': isCellActive[8]}">8</td>
+          <td (click)="showEventDialog(9)" [ngClass]="{'active': isCellActive[9]}">9</td>
+          <td (click)="showEventDialog(10)" [ngClass]="{'active': isCellActive[10]}">10</td>
+          <td (click)="showEventDialog(11)" [ngClass]="{'active': isCellActive[11]}">11</td>
+          <td (click)="showEventDialog(12)" [ngClass]="{'active': isCellActive[12]}">12</td>
+          <td (click)="showEventDialog(13)" [ngClass]="{'active': isCellActive[13]}">13</td>
+          <td (click)="showEventDialog(14)" [ngClass]="{'active': isCellActive[14]}">14</td>
+        </tr>
+        <tr>
+          <td (click)="showEventDialog(15)" [ngClass]="{'active': isCellActive[15]}">15</td>
+          <td (click)="showEventDialog(16)" [ngClass]="{'active': isCellActive[16]}">16</td>
+          <td (click)="showEventDialog(17)" [ngClass]="{'active': isCellActive[17]}">17</td>
+          <td (click)="showEventDialog(18)" [ngClass]="{'active': isCellActive[18]}">18</td>
+          <td (click)="showEventDialog(19)" [ngClass]="{'active': isCellActive[19]}">19</td>
+          <td (click)="showEventDialog(20)" [ngClass]="{'active': isCellActive[20]}">20</td>
+          <td (click)="showEventDialog(21)" [ngClass]="{'active': isCellActive[21]}">21</td>
+        </tr>
+        <tr>
+          <td (click)="showEventDialog(22)" [ngClass]="{'active': isCellActive[22]}">22</td>
+          <td (click)="showEventDialog(23)" [ngClass]="{'active': isCellActive[23]}">23</td>
+          <td (click)="showEventDialog(24)" [ngClass]="{'active': isCellActive[24]}">24</td>
+          <td (click)="showEventDialog(25)" [ngClass]="{'active': isCellActive[25]}">25</td>
+          <td (click)="showEventDialog(26)" [ngClass]="{'active': isCellActive[26]}">26</td>
+          <td (click)="showEventDialog(27)" [ngClass]="{'active': isCellActive[27]}">27</td>
+          <td (click)="showEventDialog(28)" [ngClass]="{'active': isCellActive[28]}">28</td>
+        </tr>
+        <tr>
+          <td (click)="showEventDialog(29)" [ngClass]="{'active': isCellActive[29]}">29</td>
+          <td (click)="showEventDialog(30)" [ngClass]="{'active': isCellActive[30]}">30</td>
+          <td (click)="showEventDialog(31)" [ngClass]="{'active': isCellActive[31]}">31</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      if (localStorage.getItem('cellData')) {
+        this.isCellActive = JSON.parse(localStorage.getItem('cellData'));
+      } else {
+        this.isCellActive = Array.from({ length: 32 }).
+        fill(false);
+      }
+      function showEventDialog(index) {
+      this.isCellActive[index] = !this.isCellActive[index];
+      localStorage.setItem('cellData', JSON.stringify(this.isCellActive));
+      }
+    </script>
+
+
+</div>
+<div class="battttton">
+    <button mat-raised-button (click)="addNewEvent()">Add new Event</button>
+  </div>
+  <div class="resizable-square" [ngStyle]="{ 'width.px': isSidebarOpen ? 300 : 70, 'height.px': isSidebarOpen ? 300 : 70 }"></div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <!-- Position Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>date</th>
+      <td mat-cell *matCellDef="let element">{{element.date}}</td>
+    </ng-container>
+
+    <!-- peopleName Column -->
+    <ng-container matColumnDef="peopleName">
+      <th mat-header-cell *matHeaderCellDef>peopleName</th>
+      <td mat-cell *matCellDef="let element">{{element.peopleName}}</td>
+    </ng-container>
+
+    <!-- disciplineName Column -->
+    <ng-container matColumnDef="disciplineName">
+      <th mat-header-cell *matHeaderCellDef>disciplineName</th>
+      <td mat-cell *matCellDef="let element">{{element.disciplineName}}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>description</th>
+      <td mat-cell *matCellDef="let element">{{element.description}}</td>
+    </ng-container>
+   <!-- Actions Column -->
+   <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="warn" aria-label="Delete" (click)="deleteData(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+
+  <ng-template #clickedRowsList>
+    <ul>
+      <li *ngFor="let clickedRow of clickedRows; trackBy: trackByFunction">Clicked on {{clickedRow.name}}</li>
+    </ul>
+  </ng-template>
+
+  <br>
+  <footer id="pageFooter">Сайт выполнен студентом группы бВМ-211 Безуглым Кириллом</footer>

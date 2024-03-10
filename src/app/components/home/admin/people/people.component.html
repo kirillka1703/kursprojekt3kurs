@@ -1,0 +1,95 @@
+<aside class="left_side" [ngClass]="{ 'open': isSidebarOpen }" [ngStyle]="{ 'width.px': isSidebarOpen ? 300 : 70 }">
+  <div class="btn_mnu" (click)="toggleSidebar()" [ngStyle]="{ 'width.px': sidebarOpen ? 300 : null, 'height.px': sidebarOpen ? 70 : null }">
+    <div class="btn_row">≡</div>
+  </div>
+  <nav>
+    <a routerLink="/new-calendar">
+      <span *ngIf="isSidebarOpen">Календарка</span>
+      <span *ngIf="!isSidebarOpen">📅</span>
+    </a>
+    <a routerLink="/people">
+      <span *ngIf="isSidebarOpen">Ответственный человек</span>
+      <span *ngIf="!isSidebarOpen">👤</span>
+    </a>
+    <a routerLink="/discipline">
+      <span *ngIf="isSidebarOpen">Спортивная дисциплина</span>
+      <span *ngIf="!isSidebarOpen">⚽</span>
+    </a>
+    <a routerLink="/statistic">
+      <span *ngIf="isSidebarOpen">Статистика по людям</span>
+      <span *ngIf="!isSidebarOpen">📊</span>
+    </a>
+  </nav>
+</aside>
+
+<div class="content">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+   <!-- lastName Column -->
+<ng-container matColumnDef="peopleName">
+  <th mat-header-cell *matHeaderCellDef>people Name</th>
+  <td mat-cell *matCellDef="let element" (click)="openDialog(element)">{{ element.peopleName }}</td>
+</ng-container>
+
+    <!-- firstName Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <!-- patronymic Column -->
+    <ng-container matColumnDef="patronymic">
+      <th mat-header-cell *matHeaderCellDef>Patronymic</th>
+      <td mat-cell *matCellDef="let element">{{ element.patronymic }}</td>
+    </ng-container>
+
+    <!-- discipline Column -->
+    <ng-container matColumnDef="disciplineName">
+      <th mat-header-cell *matHeaderCellDef>DisciplineName</th>
+      <td mat-cell *matCellDef="let element">{{ element.disciplineName }}</td>
+    </ng-container>
+
+    <!-- workingTime Column -->
+    <ng-container matColumnDef="workingTime">
+      <th mat-header-cell *matHeaderCellDef>Working Time</th>
+      <td mat-cell *matCellDef="let element">{{ element.workingTime }}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" aria-label="Delete" (click)="deleteData(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Add the 'actions' column to the row definition -->
+    <tr
+      mat-row
+      (click)="clickedRows.add(row)"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+    </table>
+    <br>
+    <button mat-button class="dialog-button" (click)="openDialog1()">
+      Игнат Илья Дмитриевич
+    </button>
+    <button mat-button class="dialog-button" (click)="openDialog2()">
+      Серебрянский Дмитрий Николаевич
+    </button>
+    <button mat-button class="dialog-button" (click)="openDialog3()">
+      Певторак	Викторина	Юрьевдень
+    </button>
+    <button mat-button class="dialog-button" (click)="openDialog4()">
+      Кораблина	Анастюша	Михайловна
+    </button>
+
+</div>
+<app-dialog1 *ngIf="dialog1Open" (closeDialog)="closeDialog1()"></app-dialog1>
+<app-dialog2 *ngIf="dialog2Open" (closeDialog)="closeDialog2()"></app-dialog2>
+<app-dialog3 *ngIf="dialog3Open" (closeDialog)="closeDialog3()"></app-dialog3>
+<app-dialog4 *ngIf="dialog4Open" (closeDialog)="closeDialog4()"></app-dialog4>
+

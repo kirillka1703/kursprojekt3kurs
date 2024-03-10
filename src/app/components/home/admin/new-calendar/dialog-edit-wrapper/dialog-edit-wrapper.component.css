@@ -1,0 +1,25 @@
+
+.event-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.input-container,
+mat-form-field,
+button {
+  width: 100%;
+}
+.custom-heading {
+  font-size: 24px;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+

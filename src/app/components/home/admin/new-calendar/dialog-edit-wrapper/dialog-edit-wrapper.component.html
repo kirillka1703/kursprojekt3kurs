@@ -1,0 +1,51 @@
+<div class="event-details center-text">
+  <div class="top-right">
+    <div class="center-text">
+      <h3 class="custom-heading">Добавить событие</h3>
+    </div>
+    <br>
+    <div class="input-container">
+      <label for="respPerson">Ответственный:</label>
+      <button mat-button>
+        <mat-form-field>
+          <mat-label>Person</mat-label>
+          <mat-select id="respPerson" [(ngModel)]="selectedRespPerson" name="selectedRespPerson" (selectionChange)="onRespPersonChange()">
+            <mat-option *ngFor="let person of respPersons" [value]="person">{{ person }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </button>
+    </div>
+    <br>
+    <div class="input-container">
+      <label for="sportsDiscipline">Спортивная дисциплина:</label>
+      <button mat-button [disabled]="!selectedRespPerson">
+        <mat-form-field>
+          <mat-label>Sports Discipline</mat-label>
+          <mat-select id="sportsDiscipline" [(ngModel)]="selectedSportsDiscipline" name="selectedSportsDiscipline" (selectionChange)="onSportsDisciplineChange()">
+            <mat-option *ngFor="let discipline of sportsDisciplines" [value]="discipline">{{ discipline }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </button>
+    </div>
+    <br>
+    <div class="input-container">
+      <label for="dates">Выберите число:</label>
+      <button mat-button [disabled]="!selectedSportsDiscipline">
+        <mat-form-field>
+          <mat-label>Date</mat-label>
+          <mat-select [(ngModel)]="selectedMaterial" name="selectedMaterial" (selectionChange)="onDateChange()">
+            <mat-option *ngFor="let material of dates" [value]="material">{{ material }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </button>
+    </div>
+    <br>
+    <label for="description">Сдесь вы можете указать подробную информацию о событии:</label>
+    <mat-form-field appearance="fill">
+      <mat-label>Описание события</mat-label>
+      <textarea matInput [(ngModel)]="eventDescription" placeholder="Описание события"></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="addEvent()" [disabled]="!selectedMaterial || !eventDescription">Добавить</button>
+  </div>
+</div>

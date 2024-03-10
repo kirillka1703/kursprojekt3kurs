@@ -1,0 +1,283 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,700&display=swap');
+
+table {
+  font-family: 'Montserrat Alternates', sans-serif;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+button {
+  margin-top: 8px;
+}
+
+body {
+  background-color: #a4e6fa;
+  min-height: 100vh;
+}
+
+nav {
+  display: flex;
+  flex-direction: column; /* Updated: changed flex-direction to column */
+  margin: 0;
+  padding: 0;
+  float: left;
+  background-color: #a4e6fa;
+  width: 100%;
+}
+
+nav a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 15pt;
+}
+
+nav a:hover {
+  background-color: #a4f0c4;
+}
+
+.active {
+  background-color: #a4e6fa;
+}
+h3 {
+  margin: 0 0 10px;
+}
+h3 button{
+  margin: 10px;
+}
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+body {
+  background-color: #a4e6fa;
+  min-height: 100vh;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.custom-table th {
+  background-color: #a9e0f1;
+  color: black;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #a4f0c4;
+}
+
+#pageFooter {
+  grid-area: footer;
+  background-color: #00008B;
+  }
+  .custom-select {
+    width: 200px;
+    height: 40px;
+  }
+  .small-table th:nth-child(6),
+  .small-table th:nth-child(7),
+  .small-table td:nth-child(6),
+  .small-table td:nth-child(7) {
+    color: #E6007E;
+  }
+  .small-table th {
+    color: #E6007E;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .small-table {
+    font-family: 'Montserrat Alternates', sans-serif;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+  }
+.calendar-header {
+
+  width: 600px;
+    height: 55px;
+  margin: 0 auto;
+}
+
+.calendar-wrapper {
+  text-align: center;
+  font-size: 1.2rem;
+
+}
+.calendar-wrapper {
+  text-align: center;
+}
+
+.calendar-title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  background: linear-gradient(to right, #ff1717, #fb1eff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 50px;
+
+}
+.all{
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+.calendar-title {
+  line-height: 70px;
+  font-size: 60px;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.event-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45vh; /* Для центрирования по вертикали на всю высоту окна */
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Дополнительные стили, если требуется. Необязательно */
+}
+
+.input-container label {
+  flex-basis: 150px; /* Ширина названия. Задайте нужное значение */
+  margin-right: 10px; /* Дополнительные стили, если требуется. Необязательно */
+}
+body {
+  background-color: #a4e6fa;
+  min-height: 100vh;
+}
+
+.active {
+  background-color: #a4e6fa;
+}
+
+.active-nav {
+  transform: translateX(0);
+}
+h3 {
+  margin: 0 0 10px;
+}
+h3 button{
+  margin: 10px;
+}
+
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.custom-table th {
+  background-color: #a9e0f1;
+  color: black;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #a4f0c4;
+}
+.all{
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.left_side {
+  background-color: #a4e6fa;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 70px;
+  height: 100%;
+  z-index: 10;
+  color: aliceblue;
+  transition: width 0.3s ease; /* Изменено свойство анимации на width */
+}
+
+.left_side.open {
+  width: 300px; /* Изменено значение ширины для открытого состояния */
+}
+
+.btn_mnu {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #a4e6fa;
+  cursor: pointer;
+  position: relative;
+}
+
+.content {
+  height: 100%;
+  transition: margin-left 0.3s ease;
+  margin-left: 70px;
+}
+
+.left_side.open + .content {
+  margin-left: 300px;
+}
+.btn_row {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #a4e6fa;
+  color: #ffffff;
+  font-size: 40px;
+}
